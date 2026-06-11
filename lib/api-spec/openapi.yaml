@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: AP Calculus AB Tutor API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: chat
+    description: Chat and assistant operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /chat/thread:
+    post:
+      operationId: createThread
+      tags: [chat]
+      summary: Create a new conversation thread
+      responses:
+        "201":
+          description: Thread created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Thread"
+
+  /chat/thread/{threadId}/upload:
+    post:
+      operationId: uploadFile
+      tags: [chat]
+      summary: Upload a file for use in a thread
+      parameters:
+        - name: threadId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadedFile"
+
+  /chat/thread/{threadId}/message:
+    post:
+      operationId: sendMessage
+      tags: [chat]
+      summary: Send a message and get a streaming response
+      parameters:
+        - name: threadId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageInput"
+      responses:
+        "200":
+          description: Streaming SSE response
+          content:
+            text/event-stream:
+              schema:
+                type: string
+
+  /chat/assistant:
+    get:
+      operationId: getAssistantInfo
+      tags: [chat]
+      summary: Get current assistant info
+      responses:
+        "200":
+          description: Assistant info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssistantInfo"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    Thread:
+      type: object
+      properties:
+        threadId:
+          type: string
+      required:
+        - threadId
+
+    UploadedFile:
+      type: object
+      properties:
+        fileId:
+          type: string
+        filename:
+          type: string
+      required:
+        - fileId
+        - filename
+
+    MessageInput:
+      type: object
+      properties:
+        content:
+          type: string
+        fileIds:
+          type: array
+          items:
+            type: string
+      required:
+        - content
+
+    AssistantInfo:
+      type: object
+      properties:
+        assistantId:
+          type: ["string", "null"]
+        name:
+          type: string
+        status:
+          type: string
+      required:
+        - name
+        - status

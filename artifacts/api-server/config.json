@@ -1,0 +1,6 @@
+{
+  "assistant_name": "(Brandon H) Helpful Paper Reader",
+  "assistant_instructions": "You are a helpful assistant. Use your vector-store files to answer questions. Provide clear, accurate, and well-supported responses and citations",
+  "model": "gpt-3.5-turbo",
+  "vector_store_id": "vs_6a298d5b190c8191a73b354e69162ce7"
+}

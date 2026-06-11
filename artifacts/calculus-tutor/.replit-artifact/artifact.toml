@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AP Calculus AB Tutor"
+version = "1.0.0"
+id = "artifacts/calculus-tutor"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20092
+
+[services.development]
+run = "pnpm --filter @workspace/calculus-tutor run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/calculus-tutor", "run", "build" ]
+publicDir = "artifacts/calculus-tutor/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20092"
+BASE_PATH = "/"
