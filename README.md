@@ -15,7 +15,6 @@ An AI-powered tutoring app that quizzes you on AP Calculus AB through interactiv
 - **Interactive MCQ** — answer choices are rendered as clickable buttons; once you pick one the question locks and the tutor explains the answer
 - **LaTeX math rendering** — all expressions render beautifully via KaTeX (inline and display math)
 - **Question variety** — random seed prompts ensure you get fresh questions every session, not the same ones repeated
-- **Answer verification** — the AI verifies its own arithmetic before presenting choices, so the correct answer is always one of A/B/C/D
 - **File upload** — attach a PDF or image to ask questions about your own notes or practice problems
 - **Dark mode UI** — clean, distraction-free interface optimised for studying
 
