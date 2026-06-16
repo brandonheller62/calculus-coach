@@ -1,4 +1,4 @@
-# Brandon's Tutor — AP Calculus AB Study App
+# Calculus Coach — AP Calculus AB Study App
 
 An AI-powered tutoring app that quizzes you on AP Calculus AB through interactive multiple-choice and free-response questions. Built with a React + Vite frontend and an Express backend, streaming answers in real time via OpenAI's Assistants API.
 
