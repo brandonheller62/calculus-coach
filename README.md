@@ -2,6 +2,10 @@
 
 An AI-powered tutoring app that quizzes you on AP Calculus AB through interactive multiple-choice and free-response questions. Built with a React + Vite frontend and an Express backend, streaming answers in real time via OpenAI's Assistants API.
 
+<img width="1488" height="841" alt="image" src="https://github.com/user-attachments/assets/04ec3b5e-e911-41b6-9af6-f14067d8ebcb" />
+
+<img width="1490" height="847" alt="image" src="https://github.com/user-attachments/assets/c6f40e8d-cc5f-46e6-89f6-a41321060892" />
+
 ---
 
 ## Features
